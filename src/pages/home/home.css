@@ -1,0 +1,12 @@
+.categories-contnr{
+    display: flex;
+    justify-content: space-between;
+    margin:2%;
+}
+
+.add-btn{
+    position: absolute;
+    bottom: 2%;
+    right:2%;
+    z-index: 1;
+}

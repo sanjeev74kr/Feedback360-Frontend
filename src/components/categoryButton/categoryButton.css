@@ -1,0 +1,12 @@
+.category-btn{
+    border: 0.1rem solid green;
+    width:fit-content;
+    height: fit-content;
+    padding:1%;
+    border-radius: 0.4rem;
+    text-align: center;
+}
+
+.category-btn:hover{
+    background-color: lightgreen;
+}

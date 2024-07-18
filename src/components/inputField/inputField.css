@@ -1,0 +1,12 @@
+.input-field-contnr{
+    display: flex;
+}
+
+lebel{
+    display: inline-block;
+    width:50%;
+}
+
+input{
+width:50%;
+}
