@@ -7,22 +7,39 @@ function BusinessBasicInfo(){
         category:string,
         businessName:string,
         registrationId:string,
-        website:string
+        website:string,
+        addressLine1:string,
+        addressLine2:string,
+        city:string,
+        state:string,
+        pincode:string,
+        ownerName:string,
+        contact:string,
+        photos:string,
     }
 
 const [inputField,setInputField]=useState<StateType>({
     category:'',
     businessName:'',
     registrationId:'',
-    website:''
+    website:'',
+    addressLine1:'',
+    addressLine2:'',
+    city:'',
+    state:'',
+    pincode:'',
+    ownerName:'',
+    contact:'',
+    photos:''
 });
 
+const [selectedValue,setSelectedValue]=useState('');
 
     const handleInputChange=(e:React.ChangeEvent<HTMLInputElement>,inputName:string)=>{
         console.log("e:",e); 
         switch(inputName){
-            case 'category':{
-                 setInputField((prevState)=>({...prevState,category:e.target.value}));
+            case 'website':{
+                 setInputField((prevState)=>({...prevState,website:e.target.value}));
                  break;
             }
             case 'businessName':{
@@ -36,6 +53,11 @@ const [inputField,setInputField]=useState<StateType>({
         }
     }
 
+    const handleCategoryChange=(e:React.ChangeEvent<HTMLSelectElement>)=>{
+        setSelectedValue(e.target.value);
+              setInputField((prevState)=>({...prevState,category:e.target.value})) 
+    }
+
     useEffect(()=>{
     console.log("inputField objet:",inputField);
     },[inputField]);
@@ -43,7 +65,7 @@ const [inputField,setInputField]=useState<StateType>({
     return(
         <div>
             <label>Select Business Category
-            <select>
+            <select value={selectedValue} onChange={(e:React.ChangeEvent<HTMLSelectElement>)=>handleCategoryChange(e)}>
                 <option value="Hospital">
                  Hospital    
                 </option>

@@ -8,6 +8,42 @@ function AddBusiness() {
  
   const [step,setStep]= useState(1);
 
+  
+
+  interface StateType{
+    category:string,
+    businessName:string,
+    registrationId:string,
+    website:string,
+    addressLine1:string,
+    addressLine2:string,
+    city:string,
+    state:string,
+    pincode:string,
+    ownerName:string,
+    contact:string,
+    photos:string,
+}
+
+const [inputField,setInputField]=useState<StateType>({
+category:'',
+businessName:'',
+registrationId:'',
+website:'',
+addressLine1:'',
+addressLine2:'',
+city:'',
+state:'',
+pincode:'',
+ownerName:'',
+contact:'',
+photos:''
+});
+
+useEffect(()=>{
+  console.log("inputField objet:",inputField);
+  },[inputField]);
+
   const handleNext=()=>{
    return setStep((prevStep)=>prevStep+1);
   }
@@ -19,6 +55,7 @@ function AddBusiness() {
    const handleSubmit=()=>{
     return setStep((prevStep)=>prevStep+1);
    }
+
 
   const handleSteps=()=>{
     console.log("step:",step);
@@ -34,7 +71,7 @@ function AddBusiness() {
       case 3:
         console.log("inside step 3");
 
-        return <OwnerDetails />
+        return <OwnerDetails inputField={inputField} setInputField={setInputField} />
       
       case 4:
         console.log("inside step 4");
