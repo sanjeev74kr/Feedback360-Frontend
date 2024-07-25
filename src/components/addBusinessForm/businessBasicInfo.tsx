@@ -1,4 +1,4 @@
-import InputField from "../inputField";
+import InputField from "../InputField";
 import { useEffect, useState } from "react";
 
 function BusinessBasicInfo(){

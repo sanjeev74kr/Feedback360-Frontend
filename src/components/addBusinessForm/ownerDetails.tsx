@@ -1,4 +1,4 @@
-import InputField from "../inputField";
+import InputField from "../InputField";
 
 function OwnerDetails(props:any){
     const {inputField,setInputField}=props;

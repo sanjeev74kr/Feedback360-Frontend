@@ -1,5 +1,5 @@
 import { useState } from "react";
-import InputField from "../inputField";
+import InputField from "../InputField";
 
 function BusinessAddress(){
 
@@ -32,4 +32,5 @@ function BusinessAddress(){
     </div>
   )
 }
+
 export default BusinessAddress;
