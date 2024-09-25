@@ -1,7 +1,7 @@
 import './inputField.css'
 
 function InputField(props: any) {
-  const { inputLabel, inputType, inputName, inputPlaceHolder, changeHandler } = props;
+  const { inputLabel, inputType, inputName, inputPlaceHolder, changeHandler, inputFieldValue,required=true, autoFocus } = props;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     changeHandler(e);
@@ -15,6 +15,9 @@ function InputField(props: any) {
           type={inputType}
           name={inputName}
           placeholder={inputPlaceHolder}
+          required={required}
+          autoFocus={autoFocus}
+          value={inputFieldValue}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
         />
       </label>

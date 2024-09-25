@@ -9,7 +9,9 @@ import {
   StepsHeader,
 } from "../../components";
 
-import { useEffect, useState } from "react";
+import formReducer from "../../reducer/formReducer";
+
+import { useEffect, useReducer, useState } from "react";
 
 function AddBusiness() {
   const [step, setStep] = useState(1);
@@ -29,7 +31,7 @@ function AddBusiness() {
     photos: string;
   }
 
-  const [inputField, setInputField] = useState<StateType>({
+  const initialState: StateType = {
     category: "",
     businessName: "",
     registrationId: "",
@@ -42,14 +44,33 @@ function AddBusiness() {
     ownerName: "",
     contact: "",
     photos: "",
-  });
+  };
 
+  // const [inputField, setInputField] = useState<StateType>(initialState)
+  //   category: "",
+  //   businessName: "",
+  //   registrationId: "",
+  //   website: "",
+  //   addressLine1: "",
+  //   addressLine2: "",
+  //   city: "",
+  //   state: "",
+  //   pincode: "",
+  //   ownerName: "",
+  //   contact: "",
+  //   photos: "",
+  // });
+
+  // useEffect(() => {
+  //   console.log("inputField objet:", inputField);
+  // }, [inputField]);
+
+  const [state, dispatch] = useReducer(formReducer, initialState);
 
   useEffect(() => {
-    console.log("inputField objet:", inputField);
-  }, [inputField]);
+    console.log("state of usereducer in main page:", state);
+  }, [state]);
 
-  
   const handleNext = () => {
     return setStep((prevStep) => prevStep + 1);
   };
@@ -58,8 +79,14 @@ function AddBusiness() {
     return setStep((prevStep) => prevStep - 1);
   };
 
-  const handleSubmit = () => {
-    return setStep((prevStep) => prevStep + 1);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if(step<4)
+     handleNext();
+    else{
+    sessionStorage.setItem("userData", { ...state });
+    alert("You have successfully added your business");
+    }
   };
 
   const handleSteps = () => {
@@ -67,53 +94,58 @@ function AddBusiness() {
     switch (step) {
       case 1:
         console.log("inside step 1");
-        return <BusinessBasicInfo />;
+        //return <BusinessBasicInfo inputField={inputField} setInputField={setInputField}/>;
+        return <BusinessBasicInfo state={state} dispatch={dispatch} />;
 
       case 2:
         console.log("inside step 2");
-        return <BusinessAddress />;
+        return <BusinessAddress state={state} dispatch={dispatch} />;
 
       case 3:
         console.log("inside step 3");
 
         return (
-          <OwnerDetails inputField={inputField} setInputField={setInputField} />
+          // <OwnerDetails inputField={inputField} setInputField={setInputField} />
+          <OwnerDetails state={state} dispatch={dispatch} />
         );
 
       case 4:
         console.log("inside step 4");
-        return <BusinessPhotos />;
+        return <BusinessPhotos state={state} dispatch={dispatch} />;
       default:
-        console.log("inside default");
-        setStep((prevStep) => (prevStep = 1));
+        break;
     }
   };
-
+  console.log("Business main page rendered");
   return (
     <div className="addBusiness-main-contnr">
-      <StepsHeader step={step} />
-      {handleSteps()}
-      {step > 1 && (
-        <Button
-          className="next-btn"
-          btnTitle="prev"
-          clickFunc={() => handlePrev()}
-        />
-      )}
-      {step === 4 && (
-        <Button
-          className="next-btn"
-          btnTitle="submit"
-          clickFunc={() => handleSubmit()}
-        />
-      )}
-      {step < 4 && (
-        <Button
-          className="next-btn"
-          btnTitle="Next"
-          clickFunc={() => handleNext()}
-        />
-      )}
+      <form onSubmit={(e:React.FormEvent)=>handleSubmit(e)}>
+        <StepsHeader step={step} />
+        {handleSteps()}
+        {step > 1  &&(
+          <Button
+            className="next-btn"
+            btnTitle="prev"
+            clickFunc={() => handlePrev()}
+          />
+        )}
+        {/* {step === 4 && (
+          <Button
+            className="next-btn"
+            btnType="submit"
+            btnTitle="submit"
+            clickFunc={(e: React.MouseEvent<HTMLButtonElement>) =>
+              handleSubmit(e)
+            }
+          />
+        )} */}
+
+          <Button
+            className="next-btn"
+            btnType="submit"
+            btnTitle={step<4?'next':"submit"}      
+          />
+      </form>
     </div>
   );
 }
