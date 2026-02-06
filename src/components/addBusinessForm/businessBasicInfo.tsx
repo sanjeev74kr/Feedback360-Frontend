@@ -1,3 +1,4 @@
+
 import InputField from "../InputField";
 
 function BusinessBasicInfo(props: any) {
@@ -84,7 +85,7 @@ function BusinessBasicInfo(props: any) {
 
   return (
     <div>
-      <label>
+      <label >
         Select Business Category
         <select
           value={state.category}
@@ -98,6 +99,7 @@ function BusinessBasicInfo(props: any) {
           <option value="Restaurant">Restaurant</option>
         </select>
       </label>
+
       
       <InputField
         inputType="text"

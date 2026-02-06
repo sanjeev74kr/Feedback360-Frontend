@@ -1,12 +1,18 @@
 .input-field-contnr{
     display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
 }
 
-lebel{
+label{
     display: inline-block;
-    width:50%;
+    text-align: start;
 }
 
 input{
-width:50%;
+width: 70%;
+border: 0.01rem solid gray;
+border-radius: 0.25rem;
+padding: 0.25rem;
+
 }

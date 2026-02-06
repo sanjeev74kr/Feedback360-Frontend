@@ -12,6 +12,7 @@ import {
 import formReducer from "../../reducer/formReducer";
 
 import { useEffect, useReducer, useState } from "react";
+import { Card } from "antd";
 
 function AddBusiness() {
   const [step, setStep] = useState(1);
@@ -121,7 +122,9 @@ function AddBusiness() {
     <div className="addBusiness-main-contnr">
       <form onSubmit={(e:React.FormEvent)=>handleSubmit(e)}>
         <StepsHeader step={step} />
+        <Card style={{marginInline:"auto", marginBlock:"auto", width:"80%",}}>
         {handleSteps()}
+        </Card>
         {step > 1  &&(
           <Button
             className="next-btn"

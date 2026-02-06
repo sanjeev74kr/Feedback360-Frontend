@@ -7,7 +7,6 @@
 .steps-contnr{
     display: flex;
     justify-content: space-between;
-    /* border-bottom: 1px solid black; */
 }
 .step-label{
     display: flex;

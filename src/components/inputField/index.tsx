@@ -9,9 +9,11 @@ function InputField(props: any) {
 
   return (
     <div className='input-field-contnr'>
-      <label>
+      <label htmlFor='input-area'>
         {inputLabel}
+        </label>
         <input
+          className='input-area'
           type={inputType}
           name={inputName}
           placeholder={inputPlaceHolder}
@@ -20,7 +22,6 @@ function InputField(props: any) {
           value={inputFieldValue}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
         />
-      </label>
     </div>
   );
 }
