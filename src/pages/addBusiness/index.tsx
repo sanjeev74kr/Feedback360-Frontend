@@ -85,7 +85,7 @@ function AddBusiness() {
     if(step<4)
      handleNext();
     else{
-    sessionStorage.setItem("userData", { ...state });
+    sessionStorage.setItem("userData", state );
     alert("You have successfully added your business");
     }
   };
@@ -105,10 +105,9 @@ function AddBusiness() {
       case 3:
         console.log("inside step 3");
 
-        return (
+        return <OwnerDetails state={state} dispatch={dispatch} />; 
           // <OwnerDetails inputField={inputField} setInputField={setInputField} />
-          <OwnerDetails state={state} dispatch={dispatch} />
-        );
+          
 
       case 4:
         console.log("inside step 4");
@@ -122,13 +121,15 @@ function AddBusiness() {
     <div className="addBusiness-main-contnr">
       <form onSubmit={(e:React.FormEvent)=>handleSubmit(e)}>
         <StepsHeader step={step} />
-        <Card style={{marginInline:"auto", marginBlock:"auto", width:"80%",}}>
+        <Card style={{marginInline:"auto", marginBlock:"auto", width:"fit-content", padding:"1rem"}}>
         {handleSteps()}
         </Card>
+        <div>
         {step > 1  &&(
           <Button
             className="next-btn"
-            btnTitle="prev"
+            btnType="button"
+            btnTitle="Prev"
             clickFunc={() => handlePrev()}
           />
         )}
@@ -142,12 +143,12 @@ function AddBusiness() {
             }
           />
         )} */}
-
           <Button
             className="next-btn"
             btnType="submit"
-            btnTitle={step<4?'next':"submit"}      
+            btnTitle={step<4?'Next':"Submit"}      
           />
+          </div>
       </form>
     </div>
   );

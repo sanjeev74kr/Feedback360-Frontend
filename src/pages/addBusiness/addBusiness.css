@@ -1,7 +1,8 @@
-.addBusiness-main-contnr{
+.addBusiness-main-contnr form{
     display:flex;
     flex-direction: column;
-    margin: 2%;
+    margin: 2rem;
+    row-gap: 5rem
 }
 
 .steps-contnr{
@@ -15,6 +16,11 @@
 }
 
 .next-btn{
-    width:10%;
     align-self: center;
+}
+
+.category-selector-contnr{
+    display: flex;
+    column-gap: 1rem;
+    justify-content: flex-start;
 }

@@ -85,21 +85,24 @@ function BusinessBasicInfo(props: any) {
 
   return (
     <div>
-      <label >
+      <div className="category-selector-contnr">
+      <label htmlFor="category-dropdown">
         Select Business Category
+        </label>
         <select
+          id="category-dropdown"
           value={state.category}
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
             handleCategoryChange(e)
           }
+          
         >
-          <option value="select">Select Category</option>
+          <option value="select" >Select Category</option>
           <option value="Hospital">Hospital</option>
           <option value="School">School</option>
           <option value="Restaurant">Restaurant</option>
         </select>
-      </label>
-
+</div>
       
       <InputField
         inputType="text"
