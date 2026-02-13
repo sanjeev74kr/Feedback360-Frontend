@@ -17,3 +17,29 @@ code {
   margin: 0;
   box-sizing: border-box;
 }
+
+:root{
+  --primary-color : green;
+  --secondary-color: lightgreen;
+  --border-color:"green";
+  --hover-color: lightgreen;
+  --btn-color: green;
+  --background-color: white;
+  --font-color: black;
+}
+
+[data-theme = 'dark']{
+  --primary-color : green;
+  --secondary-color: lightgreen;
+  --border-color:"green";
+  --hover-color: lightgreen;
+  --btn-color: green;
+  --background-color: black;
+  --font-color: green;
+
+}
+
+*{
+background-color: var(--background-color);
+color: var(--font-color);
+}

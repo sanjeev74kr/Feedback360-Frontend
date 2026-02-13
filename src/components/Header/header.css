@@ -1,0 +1,14 @@
+.header-container{
+    display: grid;
+    /* flex-direction: row; */
+    grid-template-columns:  auto ; 
+    align-items: center;
+    /* justify-content: space-evenly; */
+}
+.product-name{
+    justify-self: center;
+}
+
+.theme-switcher{
+    justify-self: end;;
+}

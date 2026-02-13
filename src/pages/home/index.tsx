@@ -1,6 +1,6 @@
 import './home.css'
 
-import { CategoryButton, FloatingButton } from "../../components";
+import { CategoryButton, FloatingButton, Header,  } from "../../components";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -14,6 +14,8 @@ function Home(){
 
 return(
     <div>
+        <Header />
+        <hr/>
         <div className="categories-contnr">
         <CategoryButton  btnTitle={'All'}/>
         <CategoryButton  btnTitle={'Hospitals'}/>
