@@ -1,19 +1,22 @@
-import { useEffect, useState } from 'react';
-import './header.css'
+import { useContext, useEffect, useState } from 'react';
+import { ThemeActionTypes, ThemeContext } from '../../context/ThemeContext';
 import Button from "../Button";
+import './header.css';
+ 
 function Header(){
 const [isDark, setIsDark] = useState(false);
 const [theme, setTheme] = useState('light')    
 
-useEffect(()=>{
-setTheme(()=> isDark ? 'dark' :'light')
-},[isDark])
+const themeContext = useContext(ThemeContext);
 
-
+// useEffect(()=>{
+// setTheme(()=> isDark ? 'dark' :'light')
+// },[isDark])
     
     function handleThemeSwitcher(){
-        setIsDark((prev)=>!prev)
-        document.documentElement.setAttribute('data-theme', theme);
+        // setIsDark((prev)=>!prev)
+        themeContext.dispatch({type:ThemeActionTypes.DARK})
+        document.documentElement.setAttribute('data-theme', themeContext.state.theme);
     }
 
 return(
